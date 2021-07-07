@@ -44,6 +44,7 @@ class PyAppTest(unittest.TestCase):
         # self.driver.find_element_by_xpath('/html/body/div[1]/div[1]/div/form/input[3]').click()
         # assert "Pending" == self.driver.find_element_by_xpath("/html/body/nav/div/div/p").text
         self.driver.find_element_by_link_text('Sign Up').click()
+        # assert "Password" == self.driver.find_element_by_id(id_=Pass)
 
 
     # def test_tasks_page(self):
