@@ -19,10 +19,10 @@ class PyAppTest(unittest.TestCase):
 
     @classmethod
     def setUpClass(self, url=app_target_url):
-    #     self.driver = webdriver.Remote(
-    #                     command_executor=args.selenium_server_url,
-    #                     desired_capabilities=DesiredCapabilities.CHROME
-    #                   )
+        self.driver = webdriver.Remote(
+                        command_executor=args.selenium_server_url,
+                        desired_capabilities=DesiredCapabilities.CHROME
+                      )
         self.url = url
         self.driver = webdriver.Chrome()
         self.driver.set_page_load_timeout(5)
@@ -73,7 +73,7 @@ class PyAppTest(unittest.TestCase):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    # parser.add_argument('--selenium-server-url', type=str, required=True)
+    parser.add_argument('--selenium-server-url', type=str, required=True)
     parser.add_argument('--app-target-url', type=str, required=True)
     parser.add_argument('--output', type=str, default="/tmp/results.xml")
     parser.add_argument('--pass-rate', type=int, default=100)
