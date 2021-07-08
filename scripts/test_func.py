@@ -24,7 +24,7 @@ class PyAppTest(unittest.TestCase):
             desired_capabilities=DesiredCapabilities.CHROME
         )
         self.url = url
-        self.driver = webdriver.Chrome()
+        # self.driver = webdriver.Chrome()
         self.driver.set_page_load_timeout(5)
         self.driver.maximize_window()
         self.driver.get(url)
@@ -48,13 +48,14 @@ class PyAppTest(unittest.TestCase):
         self.driver.find_element_by_link_text('Sign Up').click()
         self.driver.find_element_by_xpath('/html/body/div/nav/div/div/a')
         assert "JWT BLOG" in self.driver.title
-        # assert "GWT BLOG" == self.driver.find_element_by_xpath('/html/body/div/nav/div/div/a').text
+        # assert "JWT BLOG" == self.driver.find_element_by_xpath('/html/body/div/nav/div/div/a').text
 
     def test_password(self):
         for handle in self.driver.window_handles:
             self.driver.switch_to.window(handle)
-            assert self.url + '/web/signup' in self.driver.current_url
             self.driver.find_element_by_id("username")
+            assert self.url + '/web/signup' in self.driver.current_url
+
 
     def test_post(self):
         for handle in self.driver.window_handles:
