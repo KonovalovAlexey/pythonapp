@@ -27,8 +27,8 @@ phases:
 
 artifacts:
   files:
-    - 'appspec.yml'
-    - 'scripts'
+    - './appspec.yml'
+    - './scripts/**/*'
     - './*.deb'
   discard-paths: yes
 
