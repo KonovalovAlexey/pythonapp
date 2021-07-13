@@ -19,6 +19,8 @@ phases:
   build:
     commands:
       - chmod +x run.sh
+      - chmod +x scripts/install.sh
+      - chmod +x scripts/install_dependences.sh
 
   post_build:
     commands:
