@@ -2,7 +2,7 @@ version: 0.2
 env:
   shell: bash
   variables:
-    PACKAGE: "github.com/aws-cd/pyapp"
+    PACKAGE: "github.com/pythonapp"
 phases:
 
   install:
@@ -27,6 +27,8 @@ phases:
 
 artifacts:
   files:
+    - 'appspec.yml'
+    - 'scripts/*'
     - './*.deb'
   discard-paths: yes
 

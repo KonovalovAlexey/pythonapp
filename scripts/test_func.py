@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 
-
 import os
 import sys
 import argparse
@@ -24,7 +23,7 @@ class PyAppTest(unittest.TestCase):
             desired_capabilities=DesiredCapabilities.CHROME
         )
         self.url = url
-        # self.driver = webdriver.Chrome()
+        self.driver = webdriver.Chrome()
         self.driver.set_page_load_timeout(5)
         self.driver.maximize_window()
         self.driver.get(url)
@@ -37,33 +36,31 @@ class PyAppTest(unittest.TestCase):
 
     def test_login_page(self):
 
-        # self.driver.find_element_by_xpath('/html/body/div[1]/div[2]/div/form/input[1]').send_keys("Selenium2021");
-        # self.driver.find_element_by_xpath('/html/body/div[1]/div[2]/div/form/input[2]').send_keys("Selenium2021");
-        # self.driver.find_element_by_xpath('/html/body/div[1]/div[2]/div/form/input[3]').send_keys("example@example.com");
-        # self.driver.find_element_by_xpath('/html/body/div[1]/div[2]/div/form/input[4]').click();
-        # self.driver.find_element_by_xpath('/html/body/div[1]/div[1]/div/form/input[1]').send_keys("Selenium2021");
-        # self.driver.find_element_by_xpath('/html/body/div[1]/div[1]/div/form/input[2]').send_keys("Selenium2021");
-        # self.driver.find_element_by_xpath('/html/body/div[1]/div[1]/div/form/input[3]').click()
-        # assert "Pending" == self.driver.find_element_by_xpath("/html/body/nav/div/div/p").text
         self.driver.find_element_by_link_text('Sign Up').click()
         self.driver.find_element_by_xpath('/html/body/div/nav/div/div/a')
+        test = self.driver.find_element_by_xpath('/html/body/div/nav/div/div/a').text
+        print(test)
         assert "JWT BLOG" in self.driver.title
-        # assert "JWT BLOG" == self.driver.find_element_by_xpath('/html/body/div/nav/div/div/a').text
+        assert "JWT BLOG" in self.driver.find_element_by_xpath('/html/body/div/nav/div/div/a').text
 
     def test_password(self):
         for handle in self.driver.window_handles:
             self.driver.switch_to.window(handle)
-            self.driver.find_element_by_id("username")
+            self.driver.find_element_by_id("password")
             assert self.url + '/web/signup' in self.driver.current_url
-
+            # assert "password" in self.driver.find_element_by_id("password")
 
     def test_post(self):
         for handle in self.driver.window_handles:
             self.driver.switch_to.window(handle)
             self.driver.find_element_by_link_text('Posts').click()
             self.driver.find_element_by_class_name('close')
-            self.driver.find_element_by_xpath("/html/body/div/div[1]/button")
-
+            # war = self.driver.find_element_by_xpath("/html/body/div/div[1]").text
+            # print("===============================================")
+            # print(war)
+            # print("===============================================")
+            assert "Your token is unauthorized! LogIn, please" in self.driver.find_element_by_xpath(
+                "/html/body/div/div[1]").text
 
     @classmethod
     def tearDownClass(self):
