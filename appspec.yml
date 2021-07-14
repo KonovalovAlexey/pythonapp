@@ -5,10 +5,10 @@ files:
     destination: pyapp
 hooks:
   BeforeInstall:
-    - location: pyapp/install_dependences.sh
+    - location: install_dependences.sh
       timeout: 300
       runas: root
   ApplicationStart:
-    - location: pyapp/install.sh
+    - location: install.sh
       timeout: 300
       runas: root
