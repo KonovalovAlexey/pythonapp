@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-dpkg -i pyapp.deb
+dpkg -i pyapp/pyapp.deb
