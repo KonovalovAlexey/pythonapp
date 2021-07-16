@@ -11,7 +11,7 @@ from selenium import webdriver
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 from junitparser import JUnitXml
 
-app_target_url = "http://52.91.166.81:8080"
+# app_target_url = "http://52.91.166.81:8080"
 
 
 class PyAppTest(unittest.TestCase):
@@ -23,7 +23,7 @@ class PyAppTest(unittest.TestCase):
             desired_capabilities=DesiredCapabilities.CHROME
         )
         self.url = url
-        self.driver = webdriver.Chrome()
+        # self.driver = webdriver.Chrome()
         self.driver.set_page_load_timeout(5)
         self.driver.maximize_window()
         self.driver.get(url)
