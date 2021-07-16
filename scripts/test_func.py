@@ -17,16 +17,16 @@ from junitparser import JUnitXml
 class PyAppTest(unittest.TestCase):
 
     @classmethod
-    def setUpClass(self, url=app_target_url):
+    def setUpClass(self):
         self.driver = webdriver.Remote(
             command_executor=args.selenium_server_url,
             desired_capabilities=DesiredCapabilities.CHROME
         )
-        self.url = url
+        self.url = args.app_target_url
         # self.driver = webdriver.Chrome()
         self.driver.set_page_load_timeout(5)
         self.driver.maximize_window()
-        self.driver.get(url)
+        self.driver.get(args.app_target_url)
 
     # def test_fail(self):
     #     assert 1 == 0
