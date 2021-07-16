@@ -6,6 +6,8 @@ env:
     APP_TARGET_URL: "http://3.86.180.255:8080"
 phases:
   install:
+    runtime-versions:
+      docker: 18
     commands:
       - docker pull selenium/standalone-chrome:latest
   pre_build:
