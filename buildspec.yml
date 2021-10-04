@@ -2,7 +2,7 @@ version: 0.2
 env:
   shell: bash
   variables:
-    PACKAGE: "github.com/aws-cd/pyapp"
+    PACKAGE: "github.com/pythonapp"
 phases:
 
   install:
@@ -19,21 +19,23 @@ phases:
   build:
     commands:
       - chmod +x run.sh
+      - chmod +x scripts/install.sh
+      - chmod +x scripts/install_dependences.sh
 
   post_build:
     commands:
-      - aws s3 cp s3://pack-to-deb-script/pack_to_deb.sh ./
-      - bash pack_to_deb.sh blog.py 1.0 blog python
+#      - aws s3 cp s3://pack-to-deb-script/pack_to_deb.sh ./
+      - bash ./scripts/pack_to_deb.sh blog.py 1.0 pyapp python
 
 artifacts:
   files:
+    - './appspec.yml'
+    - './scripts/**/*'
     - './*.deb'
     - './buildspec_packer.yml'
     - './CreateAMI.json'
-    - './aws-ebs-s3.json'
     - './aws.pkr.hcl'
-    - './scripts/packer.sh'
   discard-paths: yes
 
 
-#just to restart Code Pipeline 3
+#just to restart Code Pipeline 2
